@@ -93,9 +93,10 @@ app.delete("/clients/:id", (req, res) => {
 app.post("/orders/:id", (req, res) => {
   const clientId = req.params.id;
   const orderName = req.body.orderName;
+  const date = req.body.date;
 
   db.query(
-    `INSERT INTO orders (clientId, orderName) VALUES (${clientId},"${orderName}")`,
+    `INSERT INTO orders (clientId, orderName, date) VALUES (${clientId},"${orderName}", "${date}")`,
     (err, result) => {
       if (err) {
         console.log(err);

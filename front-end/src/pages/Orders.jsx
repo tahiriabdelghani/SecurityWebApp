@@ -114,11 +114,12 @@ function Home() {
                       return order;
                     }
                   })
-                  .map(({ clientId, orderName, id }) => (
+                  .map(({date, clientId, orderName, id }) => (
                     <OrderRow
                       clientId={clientId}
                       orderName={orderName}
                       key={id}
+                      date={date}
                       id={id}
                       OnDelete={OnDelete}
                     />

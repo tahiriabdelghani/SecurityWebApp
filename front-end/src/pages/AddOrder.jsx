@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import InputGroup from "../components/InputGroup";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function AddOrder() {
   const [form, setForm] = useState({});
@@ -19,9 +19,17 @@ function AddOrder() {
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
-    axios.post(`http://localhost:3001/orders/${id}`, form).then((res) => {
-      history.push("/clients");
-    });
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, "0");
+    var mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
+    var yyyy = today.getFullYear();
+    today = mm + "/" + dd + "/" + yyyy;
+    console.log(today);
+    axios
+      .post(`http://localhost:3001/orders/${id}`, { ...form, date: today })
+      .then((res) => {
+        history.push("/clients");
+      });
   };
 
   return (

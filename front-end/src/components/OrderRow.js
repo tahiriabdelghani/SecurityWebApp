@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-function RowDetails({ clientId, orderName, id, OnDelete }) {
+function RowDetails({ date, clientId, orderName, id, OnDelete }) {
   const [clientName, setClientName] = useState("");
   const getClientName = async (clientId) => {
     await axios.get(`http://localhost:3001/clients/${clientId}`).then((res) => {
@@ -23,7 +23,7 @@ function RowDetails({ clientId, orderName, id, OnDelete }) {
       <th>{clientId}</th>
       <th>{clientName}</th>
       <td>{orderName}</td>
-      <td>Date</td>
+      <td>{date}</td>
       <td className="gap__actions">
         <span className="badge  m-1 bg-info">
           <Link to={`/orders/${id}`} className="text-white">

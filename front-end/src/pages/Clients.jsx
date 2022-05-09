@@ -7,7 +7,6 @@ import ClientImg from "../asstets/images/client.jpg";
 // import ClientImg from "../asstets/images/order.png";
 
 function Home() {
-  console.log(Date.now());
   const [clients, setClients] = useState();
   const [form, setForm] = useState({});
   const [search, setSearch] = useState("");
